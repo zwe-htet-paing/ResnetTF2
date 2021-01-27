@@ -70,7 +70,7 @@ class BottleNeck(Layer):
             kernel_size=(1, 1),
             strides=stride
         ))
-        self.dwonsample.add(BatchNormalization())
+        self.downsample.add(BatchNormalization())
 
     def call(self, inputs, training=None, **kwargs):
         residual = self.downsample(inputs)
@@ -97,7 +97,7 @@ def make_basic_block_layer(filter_num, blocks, stride=1):
     
     return res_block
 
-def maker_bottleneck_layer(filter_num, blocks, stride=1):
+def make_bottleneck_layer(filter_num, blocks, stride=1):
     res_block = tf.keras.Sequential()
     res_block.add(BottleNeck(filter_num, stride=stride))
 

@@ -1,4 +1,6 @@
 /dataset/*
+/original_dataset/*
+/saved_model/*
 /*.ipynb
 /.ipynb_checkpoints/
 __pycache__

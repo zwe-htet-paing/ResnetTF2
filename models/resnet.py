@@ -2,7 +2,7 @@
 
 import tensorflow as tf
 from config import NUM_CLASSES
-from residual_block import make_basic_block_layer, maker_bottleneck_layer
+from models.residual_block import make_basic_block_layer, make_bottleneck_layer
 
 class ResNetTypeI(tf.keras.Model):
     def __init__(self, layer_params):
@@ -72,19 +72,19 @@ class ResNetTypeII(tf.keras.Model):
             pool_size=(3, 3), 
             strides=2, 
             padding='same')
-        self.layer1 = make_basic_block_layer(
+        self.layer1 = make_bottleneck_layer(
             filter_num=64, 
             blocks=layer_params[0], 
             stride=2)
-        self.layer2 = make_basic_block_layer(
+        self.layer2 = make_bottleneck_layer(
             filter_num=128, 
             blocks=layer_params[1], 
             stride=2)
-        self.layer3 = make_basic_block_layer(
+        self.layer3 = make_bottleneck_layer(
             filter_num=256, 
             blocks=layer_params[2], 
             stride=2)
-        self.layer4 = make_basic_block_layer(
+        self.layer4 = make_bottleneck_layer(
             filter_num=512, 
             blocks=layer_params[3], 
             stride=2)
